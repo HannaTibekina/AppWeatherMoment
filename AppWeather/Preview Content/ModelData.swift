@@ -8,6 +8,7 @@
 import Foundation
 
 var previeWeather: Welcome = load("WeatherData.json")
+var previewForecastWeather: Forecast = load("ForecastWeatherData.json")
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
