@@ -43,7 +43,7 @@ struct ContentView: View {
             }
            
         }
-        .background(Color(hue: 0.611, saturation: 0.824, brightness: 0.462))
+        .background(Color("AccentColor"))
         .preferredColorScheme(.dark)
     }
 }

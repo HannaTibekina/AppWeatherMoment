@@ -7,13 +7,18 @@
 
 import SwiftUI
 
+
+
 struct WeatherView: View {
     var weather: Welcome
     var forecast: Forecast
     
     
+    
     var body: some View {
         ZStack{
+            Color("AccentColor")
+                .ignoresSafeArea()
             VStack {
                 Text(weather.name)
                     .font(.largeTitle)
@@ -34,10 +39,13 @@ struct WeatherView: View {
                 Spacer()
             }
             .padding(.top, 51)
+            
+            ForecastCard(forecast: previewForecastWeather)
+                .padding(.top, 300)
         }
     
     }
-    }
+}
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {

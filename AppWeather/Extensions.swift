@@ -12,3 +12,21 @@ extension Double {
         return String(format: "%.0f", self)
     }
 }
+
+extension String {
+
+    func dayOfWeek() -> String  {
+        
+//        let f = DateFormatter()
+//
+//        f.weekdaySymbols[Calendar.current.component(.weekday, from: Date()) - 1]
+//        return f
+        
+        let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "EEEE"
+                let weekDay = dateFormatter.string(from: Date())
+                return weekDay
+    }
+      
+    
+}
