@@ -21,6 +21,7 @@ struct WelcomeView: View {
             }
             .multilineTextAlignment(.center)
             .padding()
+            .foregroundColor(.white)
             
             LocationButton(.shareCurrentLocation) {
                 locationManager.requestLocation()

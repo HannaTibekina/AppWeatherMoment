@@ -9,24 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var locationManager = LocationManager()
-    var weatherManager = WeatherManager()
-    var forecastManager = ForecastManager()
+   var weatherManager = WeatherManager()
+ //   var forecastManager = ForecastManager()
     @State var weather: Welcome?
-    @State var weatherForecast: Forecast?
+ //   @State var weatherForecast: Forecast?
     
     var body: some View {
+        ZStack {
+            Image("back")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
         VStack {
-            
             if let location = locationManager.location {
-                if let weather = weather, let weatherForecast = weatherForecast {
-                    WeatherView(weather: weather, forecast: weatherForecast)
+                if let weather = weather {
+                    WeatherView(weather: weather)
                 } else {
                     LoadingView()
                         .task {
                             do {
-                              weather = try await weatherManager.getCurrentWeather(latitude: location.latitude, longtitude: location.longitude)
-                                
-                                weatherForecast = try await forecastManager.getForecast(latitude: location.latitude, longtitude: location.longitude)
+                                weather = try await weatherManager.getCurrentWeather(latitude: location.latitude, longtitude: location.longitude)
                             } catch {
                                 print("Error getting weather!: \(error)")
                             }
@@ -39,12 +41,12 @@ struct ContentView: View {
                 WelcomeView()
                     .environmentObject(locationManager)
                 }
-            
+            }
             }
            
         }
-        .background(Color("AccentColor"))
-        .preferredColorScheme(.dark)
+      //  .background(Color("AccentColor"))
+      // .preferredColorScheme(.dark)
     }
 }
 
